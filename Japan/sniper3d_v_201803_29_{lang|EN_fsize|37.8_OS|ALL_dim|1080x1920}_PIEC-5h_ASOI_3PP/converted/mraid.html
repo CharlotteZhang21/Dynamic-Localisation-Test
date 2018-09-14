@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playable ad test</title>
+    <meta name="viewport"
+          content="minimal-ui, user-scalable=0, width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
+    <meta name="MobileOptimized" content="640">
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <meta http-equiv="Content-Type" content="text/html, charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta charset="utf-8"/>
+    <meta name="google" content="notranslate"/>
+    <script type="text/javascript" src="mraid.js"></script>
+    <style>
+        body.mraid-webview {
+            padding: 0;
+            margin: auto;
+        }
+
+        .mraid-webview {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mraid-webview .mraid-close {
+            padding: 4px;
+            padding-top: 1px;
+            display: none;
+            background-color: red;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 3000;
+            -webkit-border-radius: 999px;
+            -moz-border-radius: 999px;
+            border-radius: 999px;
+            width: 11px;
+            height: 14px;
+            background: black;
+            border: 3px solid white;
+            cursor: pointer;
+            -webkit-box-shadow: 3px 3px 3px black;
+            -moz-box-shadow: 3px 3px 3px black;
+            box-shadow: 3px 3px 3px black;
+        }
+
+        .mraid-webview .mraid-close span {
+            position: absolute;
+        }
+
+        .mraid-webview .mraid-msg {
+            display: none;
+            opacity: .7;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            color: #c46e07;
+            text-align: center;
+            z-index: 2000;
+            outline: 1px solid #eee;
+            font-weight: bold;
+            text-shadow: 0px 2px 3px black;
+        }
+
+        .mraid-webview .mraid-url {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #mraid-ad-cntr {
+            position: fixed;
+            top: 100px;
+            right: 200px;
+        }
+
+        #mraid-ad-frame {
+            border: none;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<iframe id="mraid-ad-frame"></iframe>
+</body>
+
+</html>

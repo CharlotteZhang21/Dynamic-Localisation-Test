@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0,user-scalable=no" />
+    <meta name="author" content="Vungle">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Vungle Endcard</title>
+
+    <link rel="stylesheet" href="vungle.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="three.min.js"></script>
+    <script type="text/javascript" src="CSS3DRenderer.js"></script>
+    <script type="text/javascript" src="DeviceOrientationController.js"></script>
+    <script type="text/javascript" src="zepto.min.js"></script>
+    <script type="text/javascript" src="TweenMax.min.js"></script>
+
+<!-- logo strike start -->
+<style> 
+ #vungle-footer {display: none !important; }
+.vungle-postroll .vungle-app-header, .vungle-postroll .vungle-brand-header { background-image: none !important;  }
+#footer .logo-container img { display:none !important } 
+#vungle-replay { display:none !important } 
+</style>
+<!-- logo strike end -->
+<!-- PRIVACY START CSS -->
+    <link rel="stylesheet" href="privacy.css">
+    <!-- PRIVACY END CSS -->
+    </head>
+
+<body class="preload">
+    <div id="vungle-header" class="portrait-light landscape-light">
+        <a id="vungle-close" data-icon="i" href="javascript:void(0)" onclick="doSomething('close')"></a>
+    </div>
+    <div id="vungle-footer" class="portrait-light landscape-light portrait-center landscape-left"><span class="footer" data-icon="q"></span></div>
+
+    <!-- IEC Creative starts here-->
+
+    <div class="center-screen" id="centerscreen">
+        <div class="logo-container" id="logo">
+            <img src="logo.png">
+        </div>
+        <div class="hologram" id="hologram">
+            <img src="hologram.png">
+        </div>
+        <div class="mission" id="mission">
+            <img src="mission.png">
+        </div>
+        <div class="player" id="player">
+            <img src="player_portrait.png">
+        </div>
+        <div class="player" id="player-landscape">
+            <img src="player.png">
+        </div>
+        <div class="fire" id="fire1">
+            <img src="Fire01.png">
+        </div>
+        <div class="fire" id="fire2">
+            <img src="Fire02.png">
+        </div>
+        <div class="win" id="win">
+            <img src="win.png">
+        </div>
+        <div class="aim" id="aim">
+            <img src="aim.png">
+        </div>
+        <div class="cross" id="cross">
+            <img src="cross.png">
+        </div>
+        <div class="mech" id="mech">
+            <img src="mech02.png">
+        </div>
+
+        <div class="capture">
+            <img src="capturepointred.png" id = "capture2-red">
+        </div>
+        <div class="capture">
+            <img src="capturepointblue.png" id = "capture2-blue">
+        </div>
+
+        <a id="vungle-cta-button" class="cta" href="javascript:void(0)" onClick="doSomething('download')">
+            <img src="cta.png">
+        </a>
+
+        <div id="hand" class="hand">
+            <div class="pulse"></div>
+            <img src="hand.png">
+        </div>
+    </div>
+
+    <!-- IEC Creative ends here -->
+
+    <script type="text/javascript">
+
+        var lockView = true;
+        var gyroPresent = false;
+        window.addEventListener("devicemotion", function(event){
+           if(event.rotationRate.alpha || event.rotationRate.beta || event.rotationRate.gamma)
+               gyroPresent = true;
+        });
+
+        var bingoWinShown = false;
+        var centerscreen;
+        var cube;
+
+        var mech2, mech3, mech4;
+        var capture2Blue, capture2Red;
+        var capture3Blue, capture3Red;
+        var capture4Blue, capture4Red;
+
+        var enemiesKilled = 0;
+
+        var finalCTA = false;
+
+        var mech2Died = false;
+
+        var hologram, player, playerLandscape, win, logo, cta, aim, cross, hand;
+
+        var date, time;
+
+        function doSomething(s) {
+            return actionClicked(s);
+        }
+
+        window.onload = function () {
+            document.body.classList.remove("preload");
+        };
+
+        window.onresize = function () {
+            
+            setWatermark();
+            setTimeout(function() {
+                $('#mission').css("display", "none");
+            }, 5300);
+        };
+
+        document.ontouchmove = function (e) {
+            e.preventDefault();
+        }
+
+        $(document).ready(function () {
+            $("#hand").css("display", "none");
+            $("#fire1").css("display", "none");
+            $("#fire2").css("display", "none");
+            $("#aim").css("display", "none");
+            $("#cross").css("display", "none");
+            setTimeout(function() {
+                $("#hand").css("display", "initial");
+            }, 1600)
+            setTimeout(function() {
+                $('#mission').css("display", "none");
+            }, 5300);
+
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            centerscreen = document.getElementById("centerscreen");
+            cube = document.getElementById("cube");
+            mech2 = document.getElementById("mech");
+            capture2Red = document.getElementById("capture2-red");
+            capture2Blue = document.getElementById("capture2-blue");
+
+            hologram = document.getElementById("hologram");
+            player = document.getElementById("player");
+            playerLandscape = document.getElementById("player-landscape");
+            win = document.getElementById("win");
+            logo = document.getElementById("logo");
+            cta = document.getElementById("vungle-cta-button");
+            aim = document.getElementById("aim");
+            cross = document.getElementById("cross");
+
+            hand = document.getElementById("hand");
+
+            centerscreen.addEventListener("touchstart", function(event){
+                if (!mech2Died) {
+                    $("#hand").css("display", "none");
+                    $("#fire2").css("display", "initial");
+                    $("#fire1").css("display", "initial");
+                    $("#aim").css("display", "initial");
+                    mech2Died = true;
+                    setTimeout(function(){
+                        CapturePoint(capture2Blue, capture2Red, 1.5, 1.1);
+                        mech2.className += " mech-kill";
+                        CrossFocus(cross,1);
+                        CapturePoint(capture2Blue, capture2Red, 1, 1.2);
+                    }, 1000);
+                    setTimeout(function(){
+                        RunFinalCtaAnimation();
+                    }, 2300);
+                }
+            });
+
+        });
+
+        function CrossFocus(cross, duration) {
+            if(window.innerHeight > window.innerWidth){
+                if (window.innerWidth >= 768) {
+                    //Portrait
+                    $("#cross").css("display", "initial");
+                    TweenLite.fromTo(
+                        cross,
+                        duration,
+                        {
+                            top: "20vh",
+                            width: "80vw"
+                        },{
+                            top: "27vh",
+                            width: "30vw",
+                        });
+                    setTimeout(function() {
+                        $("#cross").css("display", "none");
+                    }, 1500);
+                } else {
+                    //Portrait
+                    $("#cross").css("display", "initial");
+                    TweenLite.fromTo(
+                        cross,
+                        duration,
+                        {
+                            top: "25vh",
+                            width: "80vw"
+                        },{
+                            top: "37vh",
+                            width: "40vw",
+                        });
+                    setTimeout(function() {
+                        $("#cross").css("display", "none");
+                    }, 1500);
+                }
+            } else {
+                if (window.innerHeight >= 768) {
+                    //Landscape
+                    $("#cross").css("display", "initial");
+                    TweenLite.fromTo(
+                        cross,
+                        duration,
+                        {
+                            top: "5vh",
+                            width: "50vw"
+                        },{
+                            top: "30vh",
+                            width: "20vw",
+                        });
+                    setTimeout(function() {
+                        $("#cross").css("display", "none");
+                    }, 1500);
+                } else {
+                    //Landscape
+                    $("#cross").css("display", "initial");
+                    TweenLite.fromTo(
+                        cross,
+                        duration,
+                        {
+                            top: "1vh",
+                            width: "50vw"
+                        },{
+                            top: "25vh",
+                            width: "20vw",
+                        });
+                    setTimeout(function() {
+                        $("#cross").css("display", "none");
+                    }, 1500);
+                }
+            }
+        }
+
+        function CapturePoint(captureblue, capturered, duration, dly) {
+            TweenLite.fromTo(
+                capturered,
+                duration,
+                {
+                    opacity:1
+                },
+                {
+                    opacity:0,
+                    delay: dly,
+                    ease: Power2.easeInOut,
+                }
+            );
+
+            TweenLite.fromTo(
+                captureblue,
+                duration,
+                {
+                    opacity:0
+                },
+                {
+                    opacity:1,
+                    delay: dly,
+                    ease: Power2.easeInOut,
+                }
+            );
+        }
+
+        /** Runs final CTA animation **/
+        function RunFinalCtaAnimation() {
+
+            console.log("inside function");
+            setTimeout(function(){
+                $("#fire1").css("display", "none");
+                $("#fire2").css("display", "none");
+                $("#aim").css("display", "none");
+            }, 500);
+
+            $("#hologram").css("animation", "none");
+            $("#hologram").css("-webkit-animation", "none");
+
+            if(window.innerHeight > window.innerWidth){
+                if (window.innerWidth >= 768) {
+                    //Portrait
+                    TweenLite.fromTo(
+                        hologram,
+                        2.8,
+                        {
+                            left: "-51vw",
+                            top: "0vw"
+                        },
+                        {
+                            top: "-40vh",
+                            delay: 2.3
+                        });
+                } else {
+                    //Portrait
+                    TweenLite.fromTo(
+                        hologram,
+                        2.8,
+                        {
+                            left: "-23vw",
+                            top: "0vw"
+                        },
+                        {
+                            top: "-40vh",
+                            delay: 2.3
+                        });
+                }
+            } else {
+                //Landscape
+                TweenLite.fromTo(
+                    hologram,
+                    1.4,
+                    {
+                        left: "-66vw",
+                        width: "33vw",
+                        top: "0vh"
+                    },
+                    {
+                        top: "-40vh",
+                        delay: 2
+                    });
+            }
+            if(window.innerHeight > window.innerWidth){
+                TweenLite.to(
+                    player,
+                    2.8,
+                    {
+                        bottom: "-53vh",
+                        ease: Expo.easeOut,
+                        delay: 2.3
+                    });
+            } else {
+                TweenLite.to(
+                    playerLandscape,
+                    1.4,
+                    {
+                        bottom: "-30vh",
+                        ease: Expo.easeOut,
+                        delay: 2
+                    });
+            }
+            if(window.innerHeight > window.innerWidth){
+                if (window.innerWidth >= 768) {
+                    TweenLite.fromTo(
+                        win,
+                        .6,
+                        {
+                            top: "-45vh"
+                        },
+                        {
+                            top: "30vh",
+                            ease: Expo.easeOut,
+                            delay: 1.2,
+                            onComplete: function() {
+                                TweenLite.to(
+                                    win,
+                                    .4,{
+                                        opacity: 0,
+                                        delay: .3
+                                    });
+                            }
+                        });
+                } else {
+                    TweenLite.fromTo(
+                        win,
+                        .6,
+                        {
+                            top: "-45vh"
+                        },
+                        {
+                            top: "35vh",
+                            ease: Expo.easeOut,
+                            delay: 1.2,
+                            onComplete: function() {
+                                TweenLite.to(
+                                    win,
+                                    .4,{
+                                        opacity: 0,
+                                        delay: .3
+                                    });
+                            }
+                        });
+                }
+            } else {
+                TweenLite.fromTo(
+                    win,
+                    .6,
+                    {
+                        top: "-55vh"
+                    },
+                    {
+                        top: "35vh",
+                        ease: Expo.easeOut,
+                        delay: 1,
+                        onComplete: function() {
+                            TweenLite.to(
+                                win,
+                                .4,{
+                                    opacity: 0,
+                                    delay: .2
+                                });
+                        }
+                    });
+            }
+            if(window.innerHeight > window.innerWidth){
+                TweenLite.fromTo(
+                    logo,
+                    .7,
+                    {
+                        top: "-40vh"
+                    },{
+                        top: "35vh",
+                        delay: 2.5
+                    });
+            } else {
+                if (window.innerHeight >= 768) {
+                    TweenLite.fromTo(
+                        logo,
+                        .7,
+                        {
+                            top: "-50vh"
+                        },{
+                            top: "35vh",
+                            delay: 2.2
+                        });
+                } else {
+                    TweenLite.fromTo(
+                        logo,
+                        .7,
+                        {
+                            top: "-50vh"
+                        },{
+                            top: "25vh",
+                            delay: 2.2
+                        });
+                }
+            }
+            if(window.innerHeight > window.innerWidth){
+                if (window.innerWidth >=  768) {
+                    TweenLite.to(
+                        cta,
+                        .9,
+                        {
+                            top: "60vh",
+                            width: "50vw",
+                            delay: 2.7
+                        });
+                } else {
+                    TweenLite.to(
+                        cta,
+                        .9,
+                        {
+                            top: "60vh",
+                            width: "81vw",
+                            delay: 2.7
+                        });
+                }
+            } else {
+                if (window.innerHeight >= 768) {
+                    TweenLite.to(
+                        cta,
+                        .9,
+                        {
+                            top: "64%",
+                            width: "40vw",
+                            delay: 2.5
+                        });
+                } else {
+                    TweenLite.to(
+                        cta,
+                        .9,
+                        {
+                            top: "64%",
+                            width: "45vw",
+                            delay: 2.5
+                        });
+                }
+            }
+        }
+
+        function debug(info) {
+            $('#debuginfo').html(info);
+        }
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight)
+            }
+
+            function onDocumentMouseDown(a) {
+                a.preventDefault();
+                document.addEventListener("mousemove", onDocumentMouseMove, false);
+                document.addEventListener("mouseup", onDocumentMouseUp, false)
+            }
+
+            function onDocumentMouseMove(b) {
+
+                var c = b.movementX || b.mozMovementX || b.webkitMovementX || 0;
+                var a = b.movementY || b.mozMovementY || b.webkitMovementY || 0;
+                lon -= c * 0.1;
+                lat += a * 0.1
+            }
+
+            function onDocumentMouseUp(a) {
+                document.removeEventListener("mousemove", onDocumentMouseMove);
+                document.removeEventListener("mouseup", onDocumentMouseUp)
+            }
+
+            function onDocumentMouseWheel(a) {
+                camera.fov -= a.wheelDeltaY * 0.05;
+                camera.updateProjectionMatrix()
+            }
+
+            function onDocumentTouchStart(a) {
+                a.preventDefault();
+                var b = a.touches[0];
+                touchX = b.screenX;
+                touchY = b.screenY
+            }
+
+            function onDocumentTouchMove(a) {
+                a.preventDefault();
+                var b = a.touches[0];
+                lon -= (b.screenX - touchX) * 0.1;
+                lat += (b.screenY - touchY) * 0.1;
+                touchX = b.screenX;
+                touchY = b.screenY
+            }
+
+    </script>
+<!-- iphone x iframe fix start -->
+         <script> 
+         setTimeout(function() {  
+              window.addEventListener("resize", function() {  
+                  location.reload();  
+              });  
+          }, 1000);  
+     </script>
+     <!-- iphone x iframe fix end -->
+     <!-- PRIVACY START HTML -->
+    <div id="bdgrzdjf-privacy-wrapper">
+        <div id="bdgrzdjf-privacy-icon" class="privacy-container">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 390 390" style="enable-background:new 0 0 390 390;" xml:space="preserve">
+                <g>
+                    <path class="st0" d="M338.3,75.4c-59.4,0-104.9-17-143.3-54.4C156.5,58.4,111,75.4,51.7,75.4c0,97.4-20.2,236.9,143.3,293.6
+            C358.5,312.3,338.3,172.8,338.3,75.4z M195.5,269.5L195.5,269.5l-0.9,0h-64.1c0-46.9,41.2-46.8,50.3-59.1l1-5.6
+            c-12.8-6.5-21.9-22.2-21.9-40.5c0-24.2,15.7-43.7,35.1-43.7s35.1,19.6,35.1,43.7c0,18.2-8.9,33.8-21.6,40.4l1.2,6.3
+            c10,11.7,49.8,12.4,49.8,58.5H195.5z" />
+                </g>
+            </svg>
+            <span> Privacy 
+                <svg id="bdgrzdjf-privacy-external" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 194.818 194.818" style="enable-background:new 0 0 194.818 194.818;" xml:space="preserve">
+                <g>
+                    <path class="privacy-external-path" d="M185.818,2.161h-57.04c-4.971,0-9,4.029-9,9s4.029,9,9,9h35.312l-86.3,86.3c-3.515,3.515-3.515,9.213,0,12.728
+                        c1.758,1.757,4.061,2.636,6.364,2.636s4.606-0.879,6.364-2.636l86.3-86.3v35.313c0,4.971,4.029,9,9,9s9-4.029,9-9v-57.04
+                        C194.818,6.19,190.789,2.161,185.818,2.161z"/>
+                    <path class="privacy-external-path" d="M149,77.201c-4.971,0-9,4.029-9,9v88.456H18v-122h93.778c4.971,0,9-4.029,9-9s-4.029-9-9-9H9c-4.971,0-9,4.029-9,9v140
+                        c0,4.971,4.029,9,9,9h140c4.971,0,9-4.029,9-9V86.201C158,81.23,153.971,77.201,149,77.201z"/>
+                </g>
+                </svg>
+            </span>
+        </div>
+        <div id="bdgrzdjf-privacy-page-wrapper">
+            <div id="bdgrzdjf-privacy-page-loading">
+                <div id="bdgrzdjf-privacy-page-spinner-wrapper">
+                    <svg class="components__spinner" width="60px" height="60px" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" style="">
+                        <circle class="path" fill="none" stroke-width="1" stroke-linecap="round" cx="17" cy="17" r="15"></circle>
+                    </svg>
+                </div>
+            </div>
+            <iframe id="bdgrzdjf-privacy-page" src=""></iframe>
+        </div>
+        <div id="bdgrzdjf-privacy-back-button-container" class="back-button-container" href="javascript:void(0)">
+            <div class="privacy-back-button-back-button">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 7000 7000" style="enable-background:new 0 0 7000 7000;" xml:space="preserve">
+                    <g>
+                        <path class="privacy-back-arrow" fill="#fff" d="M3590.2,6157.4L1234.8,3802H6927V3198H1234.8L3590.2,842.6l-422.8-422.8L72.2,3500l3080.1,3080.1L3590.2,6157.4z"></path>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!-- PRIVACY END HTML --> 
+    </body>
+    <!-- PRIVACY START JS -->
+    <script src="privacy.js"></script>
+    <!-- PRIVACY END JS -->
+
+</html>

@@ -1,0 +1,256 @@
+/* Vungle IEC-specific styling */
+
+
+.background {
+	width: 100%;
+	height: 100%;
+	background-image: url("portrait.jpg");
+	background-size: cover;
+	background-position: center center;
+	
+}
+	
+.client-cta {
+	display: block;
+    pointer-events: all;
+    margin: auto;
+    bottom: 15%;
+    top: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: 999;
+    width: 70%;
+    max-width: 300px;
+	height: auto;
+	-webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+.client-cta img {
+    width: 100%;
+}
+.logo{
+    display: block;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2%;
+    width: 70%;
+    max-width: 700px;
+}	
+	
+#vungle-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+}
+
+#vungle-footer span.footer {
+display: inline;
+
+}
+
+#vungle-footer span.footer.vungicon-windows {
+	margin-left: -10px;
+}
+
+#vungle-header span.close-text {
+    display: none; /* Hide close text unless screen is > mobile */
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 200;
+    line-height: 0.85em;
+    vertical-align: top;
+    margin-left: 10px;
+}
+    
+    #vungle-close {
+    background: rgba(107, 107, 107, 0.72);
+    text-shadow: rgba(0,0,0,0.37) 0 1px 2px;
+    color: #ffffff;
+    padding: 15px 15px 7px 15px;
+}
+
+
+#auto-text-bg{
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    vertical-align:middle;
+}
+
+#auto-text {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    font-size: 2.5em;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: -2px 1px 10px #092b1a;
+
+
+}
+    
+@media screen and (min-width : 768px){
+    
+#vungle-header span.close-icon {
+        display: inline-block;
+        font-size: 1.4em;
+        line-height: 1.1em;
+    }
+    
+#vungle-header span.close-text {
+        display: inline-block;
+        font-size: 1.4em;
+        line-height: 0.9em;
+    }
+    
+}
+
+@media all and (orientation:landscape) {
+	
+	.background {
+	width: 100%;
+	height: 100%;
+	background-image: url('landscape.jpg');
+	background-size: cover;
+	background-position: center center;
+	}
+	
+	.client-cta {
+	display: block;
+    pointer-events: all;
+    margin: auto;
+    bottom: 25%;
+    top: auto;
+    left: auto;
+    right: 5%;
+    position: absolute;
+    z-index: 999;
+    width: 40%;
+    max-width: 350px;
+	-webkit-animation-name: pulse;
+    animation-name: pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+    .logo{
+	display: block;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    top: 35%;
+    max-width: 700px;
+
+    }
+		
+}
+
+
+
+@-webkit-keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes pulse {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        -webkit-transform: scale3d(1.05, 1.05, 1.05);
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+ 
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+
+
+

@@ -1,0 +1,148 @@
+/* Vungle IEC-specific styling */
+
+body {
+	overflow: hidden;
+  background-image: url("bg_lobby.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#animation_container {
+}
+
+#canvas {
+	position: absolute;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 50%;
+}
+
+.animation img {
+	position: absolute;
+	margin: auto;
+}
+
+.logo {
+	width: 60%;
+}
+
+.msg {
+	width: 66%;
+}
+
+.sub {
+	left: 0;
+	right: 0;
+	width: 40%;
+	top: 50%;
+}
+
+.influencer {
+	width: 35%;
+}
+
+#speechbubble, #tutorial1, #tutorial2, #tutorial3, #guy{
+	opacity: 0;
+}
+
+   .character {
+       position: absolute;
+       bottom: 15%;
+       left: 0%;
+       width: 100%;
+       height: 20%;
+       overflow: visible;
+   }
+   
+   .character .domingo {
+       position: absolute;
+       bottom: 0%;
+       left: 5%;
+       width: 25%;
+   }
+   
+   .speech-bubble {
+       position: absolute;
+       left: 27%;
+       width: 70%;
+       height: 100%;
+       text-align: center;
+       z-index: 2;
+   }
+   
+   .speech-bubble .bubble {
+       position: absolute;
+       left: -4%;
+       top: 55%;
+       width: 100%;
+       text-align: center;
+       transform: translate(0%, -50%);
+       -webkit-transform: translate(0%, -50%);
+       opacity: .9;
+   }
+   
+   .speech-bubble span {
+       position: absolute;
+       top: 55%;
+       left: 50%;
+       width: 80%;
+       transform: translate(-50%, -50%);
+       -webkit-transform: translate(-50%, -50%);
+/*       font-family: 'Lithos Pro', Helvetica, Arial, sans-serif;*/
+       font-size: 3.2vw;
+   }
+   
+   .tutorial-text {
+       display: block;
+       /*       opacity: 0;*/
+       -webkit-transition: opacity 0.5s;
+       transition: opacity 0.5s;
+   }
+
+
+@media all and (orientation: landscape) {
+	.logo {
+		width: 30%;
+	}
+	.msg {
+		width: 35%;
+	}
+	.sub {
+		width: 20%;
+		top: 60% !important;
+		bottom: auto;
+		-webkit-animation-delay: .8s;
+		animation-delay: .8s;
+	}
+	.influencer {
+		width: 15%;
+	}
+	  .character {
+           left: 0%;
+           width: 70%;
+           height: 40%;
+           overflow: visible;
+       }
+       .character .domingo {
+           width: 20%;
+           z-index: 2;
+       }
+       .speech-bubble {
+           left: 25%;
+           top: 25%;
+           width: 80%;
+           height: 50%;
+       }
+       .speech-bubble .bubble {
+           left: -5%;
+           top: 85%;
+           width: 80%;
+       }
+       .speech-bubble span {
+           top: 85%;
+           left: 38%;
+           width: 70%;
+           font-size: 2vw;
+       }
+}

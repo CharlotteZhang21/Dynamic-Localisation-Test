@@ -1,0 +1,406 @@
+@font-face {
+    font-family: "DINCond";
+    src: url("DINConBol.ttf");
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    touch-action: none;
+    -ms-touch-action: none;
+    margin: 0; padding: 0; box-sizing: border-box;
+    background: #333333;
+    color: #FFFFFF;
+}
+
+html,
+body {
+    background-color: #000;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#vungle-close {
+    display: none;
+}
+
+img, div {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+}
+
+button {
+    cursor: pointer;
+    border: 0px;
+    background: transparent;
+    outline: none;
+    font: 6vh DINCond;
+    color: rgba(247, 237, 188, 1);
+}
+
+.preload .container {
+    display: none;
+}
+
+@keyframes hint-logo-hide {
+    0% {transform: translateY(0vh);}
+    100% {transform: translateY(-100vh);}
+}
+@keyframes hint-target-show {
+    0% {transform: translateX(100vw);}
+    80% {transform: translateX(-3vw);}
+    100% {transform: translateX(0);}
+}
+@keyframes hint-text-show {
+    0% {transform: translateX(-100vw);}
+    80% {transform: translateX(3vw);}
+    100% {transform: translateX(0);}
+}
+@keyframes hint-tapzone {
+    0% {opacity: 0;}
+    70% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@keyframes hint-text {
+    0% {opacity: 1;}
+    70% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+@keyframes button-move-show {
+    0% {transform: translateX(-100vw);}
+    80% {transform: translateX(3vw);}
+    100% {transform: translateX(0);}
+}
+@keyframes cta-bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.container, .container * {
+    position: absolute; box-sizing: border-box;
+    text-transform: uppercase;
+}
+.container {
+    left: 0; top: 0; right: 0; bottom: 0;
+    font-family: DINCond; color: #FFFFFF;
+    font-size: 6vh;
+}
+
+#pause {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.score {
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    height: 20vmin; line-height: 20vmin;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    pointer-events: none;
+}
+#fire-controls .score {
+    left: 0; right: 0; bottom: 2vmin;
+}
+
+.timer {
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    height: 20vmin; line-height: 20vmin;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    pointer-events: none;
+    left: 0; right: 0; top: 6vmin;
+}
+
+.cta {
+    display: inline-block;
+    text-align: center;
+    font-size: 6vh;
+    bottom: 4vh; left: 50%; margin-left: -21vh;
+    width: 42vh; height: 12vh; line-height: 10vh;
+    background-image: url("../img/cta.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: rgba(255, 242, 195, 1);
+}
+
+.cta .download-text {
+    top: 0; bottom: 0; left: 5vh;
+    line-height: 12vh;
+}
+.cta .download-arrow {
+    width: 1em; height: 1em; margin-top: -0.55em; top: 50%;
+    right: 4vh;
+    font-weight: bold;
+    background-image: url("../img/download-sign.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo {
+    width: 100vmin; margin-left: -50vmin; height: 32vmin; left: 50%;
+    bottom: 45%;
+    background-image: url("../img/logo.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.intro-title {
+    font-size: 12vmin;
+    top: 65vh; margin-top: -0.5em;
+    height: 1em; line-height: 1em; left: 0; right: 0;
+    text-align: center;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+}
+
+.pause[data-screen="hint"] .logo {
+    transform: translateY(-100vh);
+    animation: hint-logo-hide 0.3s ease-in 0s 1;
+}
+.pause[data-screen="hint"] .intro-title {
+    transform: translateY(-100vh);
+    opacity: 0;
+    animation: hint-logo-hide 0.3s ease-in 0s 1;
+}
+
+@keyframes crosshair-movement-x {
+    0% {left: 0px;}
+    20% {left: -5px;}
+    30% {left: -2px;}
+    60% {left: 5px;}
+    75% {left: 0px;}
+    80% {left: -2px;}
+    100% {left: 0px;}
+}
+@keyframes crosshair-movement-y {
+    0% {top: 0px;}
+    20% {top: -5px;}
+    30% {top: -2px;}
+    60% {top: 5px;}
+    75% {top: 0px;}
+    80% {top: -2px;}
+    100% {top: 0px;}
+}
+.pause[data-screen="hint"] .crosshair {
+    left: 0; top: 0; width: 100%; height: 100%;
+    opacity: 0.8;
+    animation:
+            crosshair-movement-x 3s linear 0s infinite,
+            crosshair-movement-y 5s linear 0s infinite
+;
+}
+.pause[data-screen="hint"] .target {
+    display: block; position: absolute; content: "";
+    width: 40vmin; height: 40vmin;
+    margin-left: -20vmin; margin-top: -20vmin;
+    top: 40vh; left: 50%;
+    background-image: url("../img/target.png");
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    background-size: 100% auto;
+    animation: hint-target-show 1s ease-out 0s 1;
+}
+.pause[data-screen="hint"] .hint-text {
+    top: 65vh; margin-top: -0.5em;
+    height: 1em; line-height: 1em; left: 0; right: 0;
+    text-align: center;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    animation: hint-text-show 1s ease-out 0s 1;
+}
+
+.pause .score {
+    text-align: right;
+    font-size: 12vmin; height: 22vmin; line-height: 22vmin;
+    left: 0vmax; right: 55vmax;
+    bottom: 45vmin;
+}
+.pause .icon {
+    left: 55vmax; bottom: 35vmin;
+    width: 42vmin; height: 42vmin;
+    background-image: url("../img/icon.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.pause #button-retry {
+    right: 55vmax; top: 70vmin;
+    width: 42vmin; height: 12vmin;
+    background-image: url("../img/retry.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.pause[data-screen="final"] .cta {
+    margin: 0;
+    left: 50vmax; top: 68vmin;
+    font-size: 8vmin;
+    width: 56vh; height: 16vh; line-height: 14vh;
+    animation: cta-bounce 2s ease-in-out 0s infinite;
+}
+
+.hand {
+    display: none; position: absolute;
+    left: 5%; top: 25%; width: 100%; height: 100%;
+    z-index: 100500;
+    background-image: url("../img/hand.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#button-move {
+    width: 20vmin; height: 20vmin;
+    left: 2vmin; bottom: 2vmin;
+    background-image: url("../img/btn_move.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: button-move-show 1s ease-out 0s 1;
+}
+#hud[data-pause="hint"][data-fire="0"] #button-move:before {
+    content: "Hold to aim";
+    display: block; position: absolute;
+    left: 2vmin; bottom: 21vmin;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    animation: hint-text 1s ease-in-out 0s infinite;
+}
+#hud[data-pause="hint"][data-fire="0"] #button-move:after {
+    display: block; position: absolute; content: "";
+    left: 0; top: 0; right: 0; bottom: 0;
+    background-image: url("../img/tapzone.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: hint-tapzone 1s ease-in-out 0s infinite;
+}
+#hud[data-pause="hint"][data-fire="0"] #button-move .hand {
+    display: block;
+    animation: hint-tapzone 1s ease-in-out 0s infinite;
+}
+
+#button-fire {
+    width: 20vmin; height: 20vmin;
+    right: 2vmin; bottom: 2vmin;
+    background-image: url("../img/btn_shoot.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.timer-progress {
+    right: -1vmin; bottom: -1vmin;
+    width: 26vmin; height: 26vmin;
+    margin-top: -12vmin;
+    transform: rotate(-90deg);
+}
+.timer-progress circle {
+    fill: transparent;
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 1vmin;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 100;
+}
+
+#hud[data-pause="hint"] #button-fire:before {
+    content: "Tap to shoot";
+    display: block; position: absolute;
+    right: 1vmin; bottom: 21vmin;
+    font-weight: bold;
+    text-align: right;
+    white-space: nowrap;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    animation: hint-text 1s ease-in-out 0s infinite;
+}
+#hud[data-pause="hint"] #button-fire:after {
+    display: block; position: absolute; content: "";
+    left: 0; top: 0; right: 0; bottom: 0;
+    background-image: url("../img/tapzone.png");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: hint-tapzone 1s ease-in-out 0s infinite;
+}
+#hud[data-pause="hint"] #button-fire .hand {
+    display: block;
+    animation: hint-tapzone 1s ease-in-out 0s infinite;
+}
+
+#crosshair {
+    width: 40vmin; height: 40vmin;
+    margin-left: -20vmin; margin-top: -20vmin;
+    top: 50%; left: 50%;
+}
+.crosshair {
+    background-image: url("../img/crosshair.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+}
+.crosshair[data-aimed="1"] {
+    background-image: url("../img/crosshair_aimed.png");
+}
+
+#hud #pause { display: block; }
+#hud #fire-controls { display: none; }
+#hud[data-fire="1"] #pause { display: none; }
+#hud[data-fire="1"] #fire-controls { display: block; }
+
+#hud .pause { display: none; }
+#hud[data-pause="intro"] #pause .pause[data-screen="intro"] { display: block; }
+#hud[data-pause="intro"] #button-move { display: none; }
+#hud[data-pause="hint"] #pause .pause[data-screen="hint"] { display: block; }
+#hud[data-pause="play"] #pause .pause[data-screen="final"] { display: block; }
+#hud[data-pause="play"] #button-retry { display: none; }
+#hud[data-pause="final"] #pause .pause[data-screen="final"] { display: block; }
+#hud[data-pause="final"] #button-move { display: none; }
+
+@media screen and (orientation: portrait) {
+    .intro-title {top: 45%; top: 45vh; font-size: 14vmin;}
+    .pause[data-screen="hint"] .target {top: 40vh;}
+    .pause[data-screen="hint"] .hint-text {top: 20vh;}
+    .cta {bottom: 25%; bottom: 25vh;}
+    .logo {width: 100vmin; margin-left: -50vmin; height: 32vmin; left: 50%; bottom: 60%;}
+
+    .pause .icon {
+        width: 42vmin; height: 42vmin;
+        top: auto; bottom: 52vmax; left: 50%; right: auto;
+        margin-left: -21vmin;
+    }
+    .pause[data-screen="final"] .cta {
+        font-size: 8vmin;
+        width: 56vmin; height: 16vmin; line-height: 14vmin;
+        left: 50%; margin-left: -28vmin; right: auto;
+        top: 50vmax; bottom: auto;
+    }
+    .pause .score {
+        text-align: center; left: 0; right: 0;
+        top: 63vmax; bottom: auto;
+        font-size: 10vmin; height: 12vmin; line-height: 12vmin;
+    }
+    .pause #button-retry {
+        width: 42vmin; height: 12vmin;
+        left: 50%; right: auto; margin-left: -21vmin;
+        top: auto; bottom: 10vmin;
+    }
+
+}

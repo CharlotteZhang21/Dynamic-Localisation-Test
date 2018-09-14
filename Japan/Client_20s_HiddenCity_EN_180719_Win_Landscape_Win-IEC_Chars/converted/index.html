@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0"/>
+		<meta name="author" content="Vungle">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Vungle Endcard</title>
+
+		<style>/*
+	    	@font-face {
+				font-family: 'myFont';
+				src: url(font.otf) format('OpenType');
+			}  */
+		  	@font-face {
+		        font-family: 'asian';
+		        src: url(jp-zh-ru-font.ttf) format('truetype');
+		    }
+	    </style>
+
+		<script src="vungle.js"></script>
+		<link rel="stylesheet" href="vungle.css">
+		<link rel="stylesheet" href="style.css">
+	<!-- logo strike start -->
+<style> 
+ #vungle-footer {display: none !important; }
+.vungle-postroll .vungle-app-header, .vungle-postroll .vungle-brand-header { background-image: none !important;  }
+#footer .logo-container img { display:none !important } 
+#vungle-replay { display:none !important } 
+</style>
+<!-- logo strike end -->
+</head>
+	<body ontouchstart="ontouchstart" class="preload">
+		<div id="vungle-header">
+			<a tabindex="2" href="javascript:void(0)" onclick="doSomething('close')">
+				<div id="vungle-close">
+					<span class="close-icon vungicon-close-simple"></span><span class="close-text">Close</span>
+				</div>
+			</a>
+		</div>
+		<div id="vungle-footer" class="portrait-light landscape-light portrait-center landscape-center"><span class="footer vungicon-windows"><span class="footer vungicon-vungle"></span></div>
+
+		<!-- IEC Creative starts here-->
+  <div class="background">
+ </div>
+   <!-- <a id="vungle-cta-button" class="client-cta pulse" href="javascript:void(0)" onclick="doSomething('download')"><img src="cta.png"></a> -->
+ 	<div id="cta" class="client-cta pulse">
+            <p id="auto-text" class="cta"></p>
+            <img id='auto-text-bg' src="cta.png">
+    </div>
+   <div class="logo-container">
+                <img src="logo.png" class="logo animated fadeIn">
+   </div>
+   
+		<!-- IEC Creative ends here -->
+		<script src="auto-localisation-util.js"></script>
+
+		<script type="text/javascript">
+
+			function initCta(){
+				var text = getLocalisedCta().text;
+		        var fontFamily = getLocalisedCta().font;
+		        var marginRight = getLocalisedCta().marginRight;
+		        var fontSize = fontFamily == 'asian'?  document.getElementById('auto-text-bg').offsetHeight * 0.4 : document.getElementById('auto-text-bg').offsetHeight * 0.4;
+		        var fontMarginTop = fontFamily == 'asian'?  document.getElementById('auto-text-bg').offsetHeight * 0.2 : document.getElementById('auto-text-bg').offsetHeight * 0.25;
+
+		        document.getElementById('auto-text').innerHTML = text;
+		        document.getElementById('auto-text').style.fontSize = fontSize + 'px';
+		        document.getElementById('auto-text').style.fontFamily = fontFamily;
+		        document.getElementById('auto-text').style.top = fontMarginTop + 'px';
+			    document.getElementById('auto-text').style.right = marginRight + 'px';
+
+		        document.getElementById('cta').addEventListener('click', function(){
+                	doSomething('download');
+            	})
+			}
+			window.onload = function() {
+				removeClass(document.body, 'preload');
+				initCta();
+			};
+
+			window.onresize = function() {
+				initCta();
+			}
+
+			document.ontouchmove = function(e){
+				e.preventDefault();
+			};
+		</script>
+	</body>
+</html>
