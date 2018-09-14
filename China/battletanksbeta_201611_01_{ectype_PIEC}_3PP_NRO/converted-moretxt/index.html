@@ -78,10 +78,11 @@
 
             var retryImg = '<img id="button-retry-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEcAAABFCAYAAAAYePsUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2VJREFUeNrsnItt2zAQQBUjA6gT1J4g6gRRJ6gyQeQJqg3qTmB0AicTxJ7A6QRWJogygbyBSiInVDD4OVIkRVM84KBAgCXq6Y7iHe9y03VdEoUti4ggwolwIhyHcjvx/VOiGdEl6KWcidaDY9BwKICC6D3RHOCoyCvRv0T3LmDdOPiUpwDkJ1iJKWkA0h/4+6rgUCgVQEktv4Anor+NQ6JwLGhFtO3cy5Zoauo5TFsOdZudgvvUoB+DiXcoORzv4Zop0t3WMD95Yzkl0lp2RAvNN5yBdbwj7rMZ+0ymwOwkA21hsKnhl3FCvIjJ4NCHfXEMRdViT7r3Hzsw0Zs7El1ahKLykrQA2XKljSMoLCsy5mK6g9gI3KicCMxw0m4Fn3qrcHIBmGxiMBhAhS04qeAzWngCRgaoxc6FqjfccsBUnoGRzUHHMXCWnHMsefEUjOyFSi2dFz50sAzvUwT0+Itoyci3rBjLft/kxAhpGhi7cviAldJzqxnOP8rjH5sm/QFpicxzy6khrXEpjzr5HJ1Q/Qzut/bUzWgW8p1x/hsvq7gQhP06ya3E4/mnUbUeHpy9pumuPXevA+NcrupW9AdHRTDfr+CrRaVlJM1WLG9ZCLL85wDB8LwiU93Uew0QDJU3E3AOAYJJOF+mO5OW01wpGN5zpapwGg5lCuThSsGI1kBKcFiUz2Ax9ZXDqE3AOQQIBr1QvUVYTn+hUMCgBRN4PgUIBrV376LKwkfpMLmdWNklCLTnCCfHTtBzhJMhQ4pZwrlDhhSznJBZKYsvLNeam+UUDDB1nHM+5VElwJ6TW9H4iZVgX8VP+eemJMtqmjHhQyhrm5Jx/jmGD5rbwXOwnC1n4SfdRgodDnWlinF+nyA2EEJ2qwzciRVHoSpDTFpOkfhTUEDHwduUxO/lG66g8qFgshDUA246xxXspUdlcJUPpbayytK+7i7t/CjS1irzt9330DqwIll5v3b/gwtz7qA8t7TQGCLrnpm0MQQ7EQ4taUxLUQG/x7QujbZY0+scGvnuEkFBECOX0jejXXYA981nX+G62GvSsOAhMbGVFFgbo9H2pdgAO3H4YLN1+hnANDYG7jq2Wib/m+77/0SAlX5OCqrpXmZV2SAhxcvv1skE9UBz3StHSdwrj3AiHOPyT4ABAJLWtFqTka/7AAAAAElFTkSuQmCC"/>';
 
-            var retryButtonSize = document.getElementById('button-retry-text').offsetHeight;
+            var retryButtonSize = fontFamily == 'asian'? document.getElementById('button-retry-text').offsetHeight * 0.7 : document.getElementById('button-retry-text').offsetHeight * 1.2;
+
             setText('button-retry', retryButtonSize, getLocalisedInstructions().retry + retryImg, fontFamily);
 
-            document.getElementById('button-retry-img').style.height = retryButtonSize  * 0.8+ 'px';
+            // document.getElementById('button-retry-img').style.height = retryButtonSize + 'px';
 
         }
 

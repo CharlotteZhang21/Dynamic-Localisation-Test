@@ -385,7 +385,7 @@ button {
     color: #fff;
     width: 56vmin;
     height: 11vmin;
-    text-align: center;
+    text-align: left;
     /*background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPIAAAA+CAMAAAAmnLZZAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMAQL+A75/fYDAQIM+PUK9wpvheMgAABKpJREFUaN7lm9maoyAQhdkRFPX9n3Z6MkkKOSzdOmX3N3PuQkxRPx4K4iL+MQXp9W9tchL/geK2mj2T0lNjWEBTNZ5sSXwIWzFe46ekSb+VfeOpNfROr593lFuiAMm9ohmP1HtL4kN7T0o8VO8oG9+N2ldqddQa28Da7A3ZiMh1qciCjFLybSRqNKLSODeJN7N3tARAbsjzIKO0eCqz5vT2dZZ6A3jKfjdbneSHtFaG7C0BucvMj7xbcjb0bYthQPk3m03hMBSLK0YVkEGJBxm1PXOkFotT2SFtPiamVt38XMQbIZtwE7KJLb448HVYCbjrgTkAclWaFRmtvUB19gNfz1hscVCIeYzsmJBRoXS2L6ey67hai6Zo2CwiG/XQYUWXFWSnDnosoevr05yFe0mXyJWOfOlsW2+orZzGi76mP+ZeAFm9WuaaszW0oTAcKUd+zdO542xXTuXU6syQ4wfMqZljMNTGiSwClCtZTGaPmxNScAQyZqYqKbt4Oyuy8NBmjla3PV8vtMAN5SknyLGwU2BFDkXVAEZX9bWMlOUq2sLxSc0cIRMmZDGXHSWy+nHsj5Gc9dHS1mEg6so1c1TcyNjRBs6OZPziZK5Q6QeiBdB/O/ICUS3RFB/q/zK3cb3OI6tvR8aoPp/MrqwpVGtIZm2bG381/TzkkE3mWPc1DQV8OT7Ny89DziZq9OBrmA+0eR4rPY7+buQVo2acluihly8SU2mM9Rzd/RU74Vpt3RsLkgfiTzs7jdbliQcZU5c4DA5WMHDHmBgqva7mmO7acE752FJioAj7xybxMLn1kCPazfEiW2iDJSj3NRzjhsSYgjrkiJt9W0FWOlO6guz36tEzXhoDzfS38YvILstxlg+ldSf5AhmkziA/O7Jwyanh7ArZ8lliHCjKsarAgFxVRNd2LwHJM8RCjZGtuAlZ4ckYXNo0H8QMyCbehSzBtZmqbAu1/k1jb+IOZDyPE/j6irB8jWzNj4yHOhiPC8JFajT0/MgWXQu3ia4KtyIok8Q9yIamT9XZZsBxYcNZXxlGWxF/Hblaj8ED14V/K+rrP8OGk9Q2rmXw9XMgQ5njAlOZaY+9dU9jYvB16xIB9eV4kSNADcJc19q4EGTI2WzIxRYr8SPTIEcMbsnZvMgLOZsNeXxRF5zNiTyBs3mRZfvSPdRsDmS438SIPL5Bs5Kz2ZDB2bzI1JusBvfkbF5kOtTwIhPVWg8ewNkMyMXikDiRqXCYAMHB2bzIlpx9BTldf3BiI2czIeMW6wKyHz8ekwwlXg0eM2czIYOz/WlkP354YiMrtYLP5GwmZJhC6ylkOlCF4aNuthocnc2L7KkpnD3Llv51dx9otI3g6GxW5EBN/iQynSDnQwXYUYHsBnfkbEAGmTPI6OwLFdu8MikeTk72XSy2UfClc08KdQoZnX1+XY7q8Aj6JqXctM0a3TQMPoGzmZAjOPsE8vBFA90tFOhsHmRcHNbzyOPXSXrI6Gxe5A2cfQK599KQjp8ssQmczYAMzj6NTK+GuZ1k4NWwbnBDzmZCRmefQ8Y33fRvSRm+uJBasgYv8gLOvoaMGiOjs3nWZVwc5E3IvwCxHW9+iJSmEwAAAABJRU5ErkJggg==);*/
  /*   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAA8CAYAAADVPrJMAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDAgNzkuMTYwNDUxLCAyMDE3LzA1LzA2LTAxOjA4OjIxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+LUNEtwAAA2BJREFUaIHlW+1xozAQfUoFXAVHB3EH4TrgKgjpICW4A5fAdeBcBfZVYFKBfRXgDt79kJgjiiSELAEmb8bDjMDSPu1q9bErgYlAMgOwAZCrn44rgAbAVQjRpJRFpKqYZA6gBPAEoACQjaziCOAPgLfUnXATSGYkK5InxsWZ5E515DKgyG5JtpHJmlDPTp7k60Rkdewo/cRoBI9pkhsANaRz8kGjfn/V86q9L9TzSdXpQ+gC4EUIcfSUIRyU49ZHuzXJMkQjJDdKm2ePdrYJaH4Qph4QoKUc30GmZ2nTxznWsdrrN5yR3E9J1iDDkIWdorY/0NMHTuRRPTo/DnG6TXp7O5UgmSqHTLeZOqXJmtCSrOJQCJZtQ7u570IrLRyEfaeqpBggXo6tLKN9uhhXWWI4iLcc42so50gTXtOJHw7ax/jB9HFuKrNUsJ+CQCgciir1D0lpxrXqrZxmb90y4RwcCzRPrWf9I19U89AYB8rx7ZZ/BOk95Y5qEV7bBZot9dD/IASt6oRFmjvtPmkDAA+Q27OxyABACKFvDxcBIcQFwC/Dq2dAkn4LqLcB8BIs1TT4bSgrADhXXTbE3ckkBM0Lltz18q4JA1aHVj6o90ePOhoAP5Y6ji14N5RtOtIm++/jHgkDUm4djwCcLp6Uq7W7MWkdBj4f5mvT8m0xW8hQmJTYf6kv1u+eMGBW5kPvfX9cXyHH8HJjSP5w+yGl3VVouAPloaVV04Bcuq1Fwx0+OeFkodqlgCS1oouu6a+AdZMmWRiKr6smDXNE9X3tpB8NZc2qHRnJFp+997c5ZJkElHFxHSdAnpysFc+GsuPUQkwG2neN+dyyJQOHjoDXBtrP/Kq5ZUsG01aSelhnTaA9gFfMLVsS0B6qXXSkNRi0B+3iRVopJ/5FHDQwZvqFo5Gq14tVlErDZSkdhLexGjGNm1nSMSjDxjbEyR6kO+Z1iDZ2huUYSp6Lmy5JdxJdm1rrHE6TjJ8fqhp2mRUpIyJVTM2r+s4D7aYh3BPC5UD6mq8Znvpcqv/7RFRHWdgtSe45ZJJ74fmXfpJ7dzOnQ5fU/h3yJo9vnRcAPyc/suZ81xmSpln7EP9aF1f6YNorSttYZKe6jNbdvPNFN+aTXEab7DSU/68dAmZHdVTPJnXGwz9ucZieLLGGIgAAAABJRU5ErkJggg==);
     background-position: right bottom;
@@ -395,6 +395,7 @@ button {
 
 #button-retry-img {
 	vertical-align: bottom;
+	height: 100%;
 }
 
 .pause[data-screen=final] .cta {
@@ -685,15 +686,27 @@ button {
         height: 12vmin;
         line-height: 12vmin
     }
+    #button-retry-text {
+    	height: 6%;
+    }
     .pause #button-retry {
-        width: 42vmin;
-        height: 12vmin;
-        left: 50%;
-        right: auto;
-        margin-left: -21vmin;
+        /*width: 50vmin;*/
+        width: 50%;
+        height: 6%;
+        /*left: 50%;*/
+        left: 0;
+        right: 0;
+        margin: auto;
+        /*margin-left: -21vmin;*/
         top: auto;
         bottom: 10vmin
     }
+}
+
+@media (min-width: 768px) and (orientation: portrait) {
+/*	#button-retry-text {
+		height: 9vmin;
+	}*/
 }
 
 @charset "UTF-8";

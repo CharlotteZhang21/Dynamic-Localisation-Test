@@ -1,7 +1,5 @@
-var lang = null;
-
 function getBrowserLanguage() {
-	// var lang;
+	var lang;
     if (navigator.userLanguage) {
         lang = navigator.userLanguage;
         lang = lang.split("-")[0];
@@ -11,115 +9,49 @@ function getBrowserLanguage() {
     } else {
         lang = "en";
     }
-    // return lang;
+    return lang;
 
 }
 
-function getLocalisedInstructions() {
-    if(lang==null)
-        getBrowserLanguage();
-
-    var moveButtonText = "hold to aim";
-    var introText = "Target practice";
-    var hintText = "shoot as many as you can";
-    var score = "score";
-    var fireButtonText = "Tap to fire";
-    var retry = "retry";
-    var font = 'DINCond';
-    var fontSize = null;
-
-
-    switch (lang) {
-        case "en":
-            break;
+function getLocalisedLogo() {
+    var language = getBrowserLanguage();
+    var logo;
+    switch (language) {
         case "ja":
-            introText = "射撃練習";
-            moveButtonText = "狙いを定める";
-            fireButtonText = "タップして発砲";
-            hintText = "できるだけ多く撃ちましょう";
-            retry = 'もう一度';
-            score = 'スコア';  
-            font = 'asian';          
+            logo = 'logo-JA.png';
             break;
         case "ko":
-            introText = "조준 연습";
-            moveButtonText = "에임을 유지하세요";
-            fireButtonText = "탭하여 발사";
-            hintText = "할 수 있는 최대한 많이 발사하세요";
-            score = '점수';
-            retry = "재시도";
-            font = 'asian';
-            // marginLeft = 35;
+            logo = 'logo-KO.png';
             break;
         case "zh":
-            introText = "瞄准训练";
-            moveButtonText = "按住瞄准";
-            fireButtonText = "点击射击";
-            hintText = "射中越多越好";
-            score = '得分';
-            retry = '再来一次';
-            font = 'asian';
-            // marginLeft = 35;
+            logo = 'logo-CN.png';
             break;
-        case "ru":
-            introText = "Стрельба по мишеням";
-            moveButtonText = "Удерживайте для прицела";
-            fireButtonText = "Нажмите, \nчтобы открыть огонь";
-            hintText = "сделайте столько\nвыстрелов,\nсколько сможете";
-            score = 'счет';
-            retry = 'повторить';
-            font = 'asian';
-            fontSize = 30;
-            // marginLeft = 35;
-            break;
-        }
-    return {
-        'moveButtonText': moveButtonText,
-        'introText': introText, 
-        'hintText': hintText,
-        'fireButtonText': fireButtonText,
-        'score': score,
-        'retry': retry,
-        'font': font,
-        'fontSize': fontSize,
+        default:
+            logo = 'logo-EN.png';
+
     }
+    return logo;
+    
 }
 
 function getLocalisedCta() {
-	 if(lang==null)
-        getBrowserLanguage();
-
-    var downloadText = "DOWNLOAD";
-    var font = 'DINCond';
-    var marginLeft = 20;
-    var fontSizeMultiplier = 0.5;
-    switch (lang) {
+	var language = getBrowserLanguage();
+    var downloadText = "Download";
+    var font = "myFont";
+    switch (language) {
         case "en":
-            downloadText = "DOWNLOAD";
-            downloadText.toUpperCase();
-            // marginLeft = 18;
+            downloadText = "Download";
             break;
         case "ja":
             downloadText = "ダウンロード";
             font = 'asian';
-            marginLeft = 18;
-            fontSizeMultiplier = 0.35;
             break;
         case "ko":
             downloadText = "다운로드";
-            font = 'asian';
-            // marginLeft = 35;
             break;
         case "zh":
             downloadText = "立即下载";
             font = 'asian';
-            // marginLeft = 35;
-            break;
-        case "ru":
-            downloadText = "Скачать";
-            downloadText.toUpperCase();
-            font = 'asian';
-            // marginLeft = 35;
             break;
         // case "de":
         //     downloadText = "Herunterladen";
@@ -139,17 +71,21 @@ function getLocalisedCta() {
         // case "ca":
         //     downloadText = "Descarregar";
         //     break;
+        case "ru":
+            downloadText = "Скачать";
+            font = 'asian';
+            break;
         // case "tr":
         //     downloadText = "Indir";
         //     break;
         // case "nl":
-        //     downloadText = "Play Now";
+        //     downloadText = "Download";
         //     break;
         // case "sv":
         //     downloadText = "Ladda ner";
         //     break;
         // case "id":
-        //     downloadText = "Play Now";
+        //     downloadText = "Download";
         //     break;
         // case "ro":
         //     downloadText = "Descărcare";
@@ -256,6 +192,8 @@ function getLocalisedCta() {
         // case "fi":
         //     downloadText = "ladata";
         //     break;
+        default:
+            downloadText = "Play Now";
     }
-    return {'text' : downloadText, 'font' : font, 'marginLeft': marginLeft, 'fontSizeMultiplier': fontSizeMultiplier};
+    return {'text' : downloadText.toUpperCase(), 'font' : font};
 }
