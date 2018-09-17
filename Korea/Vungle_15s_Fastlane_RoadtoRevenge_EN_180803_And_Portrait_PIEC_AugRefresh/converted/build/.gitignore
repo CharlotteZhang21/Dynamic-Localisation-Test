@@ -1,0 +1,7 @@
+node_modules
+temp
+.idea
+.DS_STORE
+dist
+source
+scripts
