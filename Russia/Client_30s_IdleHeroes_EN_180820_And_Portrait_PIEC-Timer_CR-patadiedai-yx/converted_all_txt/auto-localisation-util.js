@@ -1,3 +1,5 @@
+var language = null;
+
 function getBrowserLanguage() {
 	var lang;
     if (navigator.userLanguage) {
@@ -14,7 +16,8 @@ function getBrowserLanguage() {
 }
 
 function getLocalisedLogo() {
-    var language = getBrowserLanguage();
+    if(language == null)
+        language = getBrowserLanguage();
     var logo;
     switch (language) {
         case "ja":
@@ -35,7 +38,8 @@ function getLocalisedLogo() {
 }
 
 function getLocalisedCta() {
-	var language = getBrowserLanguage();
+	if(language == null)
+        language = getBrowserLanguage();
     var downloadText = "Download";
     var font = "myFont";
     switch (language) {
@@ -192,8 +196,37 @@ function getLocalisedCta() {
         // case "fi":
         //     downloadText = "ladata";
         //     break;
-        default:
-            downloadText = "Play Now";
     }
     return {'text' : downloadText.toUpperCase(), 'font' : font};
+}
+
+function getLocalisedMessage(){
+
+    if(language == null)
+        language = getBrowserLanguage();
+    var messageText = "Join millions of other players<br>around the world!";
+    var font = "myFont";
+    switch (language) {
+        case "en":
+            messageText = "Join millions of other players<br>around the world!";
+            break;
+        case "ja":
+            messageText = "世界中の何百万人ものプレイ<br>ヤーと一緒に楽しみましょう!";
+            font = 'asian';
+            break;
+        case "ko":
+            messageText = "전세계 수백만명의 사용자<br>대열에 합류하세요!";
+            font = 'asian';
+            break;
+        case "zh":
+            messageText = "加入世界各地的百万玩家！";
+            font = 'asian';
+            break;
+        case "ru":
+            messageText = "Присоединяйтесь к миллионам<br>игроков по всему миру!";
+            font = 'asian';
+            break;
+    }
+    return {'text' : messageText.toUpperCase(), 'font' : font};
+
 }

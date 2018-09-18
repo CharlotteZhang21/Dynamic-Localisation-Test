@@ -11,6 +11,7 @@
 
     // add click events
     document.getElementById(prefix + 'privacy-icon').addEventListener("click", privacyExtend);
+
     document.getElementById(prefix + 'privacy-back-button-container').addEventListener("click", hideIframe);
 
     function addClass(el, className) {

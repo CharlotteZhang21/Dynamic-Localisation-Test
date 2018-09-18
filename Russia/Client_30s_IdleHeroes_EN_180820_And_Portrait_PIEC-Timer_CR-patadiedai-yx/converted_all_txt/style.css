@@ -159,7 +159,7 @@ CSS STARTS HERE:
     right: 0;
     position: absolute;
     z-index: 999;
-    width: 160px;
+    width: 50%;
     height: 40px;
 }
 
@@ -314,6 +314,7 @@ CSS STARTS HERE:
     .client-cta-text {
         bottom: auto;
         top: 0vh;
+        width: 30%;
     }
 }
 
@@ -339,6 +340,10 @@ CSS STARTS HERE:
         width: auto;
         height: 70%;
         /*        right: auto;*/
+    }
+
+    #vungle-lightbox .client-cta-text, #vungle-lightbox .client-cta{
+        width: 20%;
     }
 }
 
@@ -518,5 +523,8 @@ CSS STARTS HERE:
 @media (min-width: 768px) and (orientation: portrait) {
     #auto-text-bg {
         width: 50%;
+    }
+    .client-cta, .client-cta-text{
+        width: 38%;
     }
 }

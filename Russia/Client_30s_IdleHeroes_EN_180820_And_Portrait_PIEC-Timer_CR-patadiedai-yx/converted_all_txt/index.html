@@ -91,7 +91,7 @@
 
                 <div id="client-messaging">
                     <img class="client-logo-long" src="logo_400x200.png" id="wrongClick"></br>
-                    <h3>Join millions of other players<br>around the world!</h3>
+                    <h3 id="message">Join millions of other players<br>around the world!</h3>
                 </div>
 
             </div>
@@ -215,15 +215,26 @@
             // document.getElementById('auto-text').style.left = fontMarginLeft + 'px';
 
             document.getElementById('vungle-cta-button').innerHTML = getLocalisedCta().text + ' <span class="footer" data-icon="j"></span>';
+            // document.getElementById('vungle-cta-button').style.fontSize = fontSize * 0.8+ 'px';
             document.getElementById('cta').addEventListener('click', function(){
                 doSomething('download');
             })
+        }
+
+        function initMessage() {
+            var text = getLocalisedMessage().text;
+            var fontFamily = getLocalisedMessage().font;
+
+            document.getElementById('message').innerHTML = text;
+            document.getElementById('message').style.fontFamily = fontFamily;
+
         }
 
         document.addEventListener('DOMContentLoaded', function () {
 
             document.body.classList.remove("preload");
             initCta();
+            initMessage();
             startCountingDownTimer();
             mylightBox = document.getElementById('vungle-lightbox');
             lightBoxClose = document.getElementById('lightbox-close');
